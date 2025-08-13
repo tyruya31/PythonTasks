@@ -1,0 +1,20 @@
+''' Task 7: Lists - Displays a list of records '''
+
+# Compose a list of film records.
+film_list = []
+film_list.append(['1', 'Stealth', 135, 80])
+film_list.append(['2', 'Supernova', 90, 15])
+film_list.append(['3', 'Robin Hood', 100, 85])
+film_list.append(['4', 'Rollerball', 70, 26])
+film_list.append(['5', 'Rust', 85, 20])
+
+# Headings for Titles
+t1, t2 = "Title", "Box-office"
+print(f"{t1:<20}{t2}")
+print("------------------------------")
+for film in film_list:
+  num = film_list.index(film) + 1
+  print(f"{film[1]:<20}{film[3]:}")
+
+print("")
+print(f"Total Films: {len(film_list)}")
