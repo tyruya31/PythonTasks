@@ -1,0 +1,46 @@
+''' Task 8: Function: Process a list of records  '''
+
+# Define functions
+
+
+def get_records():
+  # Compose a list of film records
+  film_list = []
+  film_list.append(['FM01', 'Stealth', 135, 80])
+  film_list.append(['FM02', 'Supernova', 90, 15])
+  film_list.append(['FM03', 'Robin Hood', 100, 85])
+  film_list.append(['FM04', 'Rollerball', 70, 26])
+  film_list.append(['FM05', 'Rust', 85, 20])
+  return film_list
+
+
+def display_list(data):
+  h1, h2, h3, h4 = "ID", "Title", "Budget", "Box Office"
+  print(f"{h1:<10}{h2:<20}{h3:<20}{h4}")
+  print("-" * 45)
+  for rec in data:  #should not use records/rec_list
+    print(f"{rec[0]:10}{rec[1]:<20}{rec[2]:<20}{rec[3]}")
+
+
+def search_by_film_id(records):
+  film_id = input("Enter film id: ")
+  rec_found = None
+  for rec in data:
+    if film_id.lower() == rec[0].lower():
+      rec_found = rec
+      break
+  if rec_found == None:
+    print(f"No record found for {film_id}")
+  else:
+    budget_loss = int(rec_found[2]) - int(rec_found[3])  # calculation to find budget loss
+    print(f" Film matching the given id: {rec_found[1]}")
+    print(f" Budget Loss for film {film_id.upper()}: {budget_loss}")
+
+
+def main():
+  rec_list = get_records()
+  display_list(rec_list)
+  search_by_film_id(rec_list)
+
+
+main()
