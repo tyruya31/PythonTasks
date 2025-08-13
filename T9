@@ -1,0 +1,29 @@
+''' Task 9: Function: Process a list of records Pt. 2  '''
+
+
+# create a list of records
+def get_records():
+  film_list = []
+  film_list.append(['1', 'Stealth', 135, 80])
+  film_list.append(['2', 'Supernova', 90, 15])
+  film_list.append(['3', 'Robin Hood', 100, 85])
+  film_list.append(['4', 'Rollerball', 70, 26])
+  film_list.append(['5', 'Rust', 85, 20])
+  return film_list
+
+
+# calculation for the films total loss
+def get_total_budget_loss(data):
+  total = 0
+  for rec in data:
+    total += rec[2] - rec[3]
+  return total
+
+
+def main():
+  rec_list = get_records()
+  tbl = get_total_budget_loss(rec_list)
+  print(f"Total budget loss of films: ${tbl}")
+
+
+main()
