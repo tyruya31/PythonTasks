@@ -1,0 +1,66 @@
+''' Task 6: For loop: draw a pattern of circles '''
+
+from turtle import *
+
+# read & validate number of circles
+while True:
+  circleNumber = int(input("Enter number of circle number (2-6 inclusive): "))
+  if circleNumber >= 2 and circleNumber <= 6:
+    break
+  else:
+    print("Invalid number. Please enter a number between 2 & 6 inclusive.")
+
+speed(0)
+x, y, rad = 0, 0, 10
+
+# drawing the circles
+for i in range(circleNumber):
+  # move pen to (x, y) w/o leaving a line
+  pu()
+  goto(x, y)
+  pd()
+  # making circle
+  begin_fill()
+  fillcolor("blue")
+  circle(rad)
+  end_fill()
+  x -= rad * 2  # move from right to left by rad*2
+
+for i in range(circleNumber):
+  # move pen to (x, y) w/o leaving a line
+  pu()
+  goto(x, y)
+  pd()
+  begin_fill()
+  fillcolor("yellow")
+  circle(rad)
+  end_fill()
+  # to achieve the diagonal line
+  y -= rad * 2  # move from top to bottom by rad*2
+
+for i in range(circleNumber):
+  pu()
+  goto(x, y)
+  pd()
+  begin_fill()
+  fillcolor("red")
+  circle(rad)
+  end_fill()
+  x += rad * 2  # move right
+  y += rad * 2  # move up
+
+pensize(1)
+pencolor("black")
+size = rad * 2 * circleNumber  # calculate square size based on circleNumber value
+
+# move pen to first blue circle
+x, y = 0, 0
+pu()
+goto(x, y)
+pd()
+
+for i in range(4):  # we use 4 because square has 4 sides
+  bk(size)
+  lt(90)
+
+exitonclick()
