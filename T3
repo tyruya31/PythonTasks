@@ -1,0 +1,13 @@
+''' Task 3: Workers pay '''
+
+weekdayHours = float(input("Enter weekday hours: "))
+weekendHours = float(input("Enter weekend hours: "))
+weekdayHourlyRate = float(input("Enter weekday hourly rate: "))
+
+print('')
+print("Payment Details: ")
+t1, t2, t3 = "Weekday pay amount:", "Weekend pay amount:", "Total:"
+print('')
+print(f"{t1:<30}${weekdayHours * weekdayHourlyRate:.2f}")
+print(f"{t2:<30}${weekendHours * weekdayHourlyRate * 2:.2f}")
+print(f"{t3:<30}${weekdayHours * weekdayHourlyRate + weekendHours * weekdayHourlyRate * 2:.2f}")
