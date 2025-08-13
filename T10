@@ -1,0 +1,85 @@
+''' Task 10: File I/O'''
+
+
+def read_data(filename):
+  records = []
+  with open(filename) as fr:
+    lines = fr.readlines()
+    for line in lines:
+      line = line.strip()
+      if len(line) == 0:
+        continue
+      str_rec = line.split(",")
+      store_ID = str_rec[0].strip()
+      emloyees = float(str_rec[1].strip())
+      suburb_name = str_rec[2].strip()
+      sale_volume = float(str_rec[3].strip())
+      rec = [store_ID, emloyees, suburb_name, sale_volume]
+      records.append(rec)
+  return records
+
+
+def print_all_records(records):
+  h1, h2, h3, h4 = "Store ID", "Employees", "Suburb", "Sales"
+  print(f"{h1:15}{h2:<15}{h3:<15}{h4:}")
+  print("-" * 55)
+  for rec in records:
+    print(f"{rec[0]:15}{rec[1]:<15}{rec[2]:<15}${rec[3]}")
+
+
+def write_data(filename, records):
+  with open(filename, "w") as fw:
+    for rec in records:
+      fw.write(f"{rec[0]},{rec[1]},{rec[2]},{rec[3]}\n")
+
+
+def get_min_emp_stores(records):
+  mrecs = []
+  if len(records) > 0:
+    mprice = records[0][1]
+    for rec in records:
+      if rec[1] < mprice:
+        mprice = rec[1]
+    for rec in records:
+      if rec[1] == mprice:
+        mrecs.append(rec)
+  return mrecs
+
+
+def count_employees(records):
+  total = 0
+  for rec in records:
+    if rec[3] > 50000:  # sales is greater than 50000
+      total += rec[1]  # accumulate the total number of employees
+  return total
+
+
+def query_suburb_stats(records):
+  suburb_name = input("Enter suburb name: ").capitalize()
+  total_sale = 0
+  avg_sale = 0
+  for rec in records:
+    if suburb_name.lower() == rec[2].lower():
+      total_sale += rec[3]
+      avg_sale += 1
+  if avg_sale == 0:
+    print(f"No record was found for {suburb_name}")
+  else:
+    print(f"Total sale by {suburb_name}: ${total_sale}")
+    print(f"Average sale by {suburb_name}: ${total_sale/avg_sale}")
+
+
+def main():
+  records = read_data("data.txt")
+  print_all_records(records)
+  write_data("backup.txt", records)
+  print('')
+  print("Stores with minimum number of employees:")
+  print_all_records(get_min_emp_stores(records))
+  print('')
+  print(f"Total employees from stores with sales more than $500000: {count_employees(records)}")
+  print('')
+  query_suburb_stats(records)
+
+
+main()
