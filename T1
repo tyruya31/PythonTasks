@@ -1,0 +1,15 @@
+from turtle import *
+
+# drawing the letter 'U'
+pu()
+goto(-50, 50)
+pensize(20)
+pencolor('pink')
+pd()
+seth(270)
+fd(100)
+seth(-90)
+circle(50, 180)
+fd(100)
+
+exitonclick()
