@@ -1,0 +1,20 @@
+''' Task 4: Message of the Day '''
+
+# Code for user input of a number between 1-7 and prints a message for each day of the week
+num = int(input("Enter a number from 1 to 7: "))
+if num == 1:
+  print("Marvelous Monday")
+elif num == 2:
+  print("Terrific Tuesday")
+elif num == 3:
+  print("Wacky Wednesday")
+elif num == 4:
+  print("Fab Thursday")
+elif num == 5:
+  print("Good Friday")
+elif num == 6:
+  print("Relaxing Saturday")
+elif num == 7:
+  print("Sweet Sunday")
+else:
+  print("Mysterious day")
