@@ -1,0 +1,38 @@
+''' Task 5: While Loop - Determine grocery discount eligibility '''
+
+# Ask the user to enter the price of the product
+price = float(input("Enter product price (>0): "))
+while True:
+  if price <= 0:
+    print("Invalid.")
+    price = float(input("Enter product price (>0): "))
+  else:
+    break
+
+# Ask the user to enter the quantity
+quantity = int(input("Enter quanity (>0): "))
+while True:
+  if quantity <= 0:
+    print("Invalid quantity")
+    quantity = int(input("Enter quanity (>0): "))
+  else:
+    break
+
+# Ask the user whether he/she has claimed a discount code during the month
+discount = input("Have you claimed a discount code before? (y/n): ").upper()
+while True:
+  if discount != "Y" and discount != "N":
+    print("Invalid input")
+    discount = input("Have you claimed the discount code before? (y/n): ").upper()
+  else:
+    break
+
+# If user has claimed a discount code & the total price is greater than 500, then user is eligible for a discount
+if price * quantity <= 500 and discount == "N":
+  print("Total shopping amount: ", '$', price * quantity)
+  print("Claimed discount: ", discount)
+  print("You are eligible")
+else:
+  print("Total shopping amount: ", '$', price * quantity)
+  print("Claimed discount: ", discount)
+  print("Sorry, you aren't eligible for a discount")
